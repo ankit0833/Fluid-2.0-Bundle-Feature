@@ -1,0 +1,23 @@
+<div class="line_item">
+   <div class="line-item_left col-4 cart-product-img">
+     <div class="line_item_image_wrapper cart-img me-3 me-lg-4 ">
+        <img class="img-fluid item-img" src="{{ line_item.image | image_url: width:150 }}" width="75" alt="{{ line_item.image.alt}}"/>
+      </div> 
+      <h1 class="text-muted small text-capitalize 1">{{ line_item.product.title }}</h1>  
+   </div>
+   <div class="line-item_details">
+      <ul>
+      {%- for option in item.options_with_values -%}
+         <li>{{ option.name }}</li>
+      {% endfor %}  
+      </ul>
+   </div>
+   
+   <div class="col-4 col-md-2 text-md-center cart-price">
+    <h1 class="line-item_price">{{ line_item.product.price | money }}</h1>
+   </div>
+   <div class="line-item_quantity col-5 col-md-2 quantity-box">
+       <span class="quantity">Quantity</span>
+       <input type="number" name="update[]" step="1" min="1" id="quantity_box" value="{{ line_item.quantity }}">
+   </div>
+</div>

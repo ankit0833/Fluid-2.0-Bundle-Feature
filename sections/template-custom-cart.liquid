@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+     <div class="col-12">
+         <h1 class="cart-header">Your cart</h1>
+         <form action="{{ routes.cart_url }}" method="post">
+            {% for line_item in cart.items %}
+              {% render 'cart-line-item', line_item: line_item %}
+            {% endfor %}
+          </form>
+         <div class="cart-footer"> 
+          <div class="col-12 col-lg-7 pt-4 ">
+            <textarea class="form-control" required row="2" class="required" id="message" name="properties[Message]">
+            </textarea>
+          </div>
+          <div class="cart_details col-12 col-lg-4 ms-lg-auto me-lg-0 mt-5 mx-auto cart-total ">
+            <div class="cart_total">
+              <span class="cart_total_text">Total:</span>
+              <span class="cart_total_price">{{ cart.total.price | money}}</span>
+            </div>
+            <div class="checkout-cart">
+            <input type="submit" name="checkout" value="Checkout">
+            </div>
+          </div> 
+         </div> 
+     </div>
+   </div>
+</div>
